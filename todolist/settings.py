@@ -13,8 +13,6 @@ import os
 from pathlib import Path
 import environ
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool), SECRET_KEY=(str))
@@ -30,7 +28,6 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -75,22 +72,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todolist.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todolist_db',
-        'USER': 'matvey',
-        'PASSWORD': '2898',
-        'HOST': 'localhost',
-        'PORT': '5432',
-
-    }
-}
-
+DATABASES = {'default':
+                 {'ENGINE': 'django.db.backends.postgresql',
+                  'NAME': env('NAME'),
+                  'USER': env('USER'),
+                  'HOST': env('HOST'),
+                  'PASSWORD': env('PASSWORD'),
+                  'PORT': env('PORT'),
+                  }
+             }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -111,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 AUTH_USER_MODEL = "core.User"
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -122,7 +113,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
