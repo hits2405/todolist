@@ -15,7 +15,7 @@ import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env(DEBUG=(bool), SECRET_KEY=(str))
+env = environ.Env(DEBUG=(bool, False), SECRET_KEY=(str, "spifq9otuo"))
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
@@ -75,12 +75,13 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 DATABASES = {'default':
-                 {'ENGINE': 'django.db.backends.postgresql',
+                 {'ENGINE': env('ENGINE'),
                   'NAME': env('NAME'),
                   'USER': env('USER'),
                   'HOST': env('HOST'),
                   'PASSWORD': env('PASSWORD'),
                   'PORT': env('PORT'),
+                  'DATABASE_URL': env('DATABASE_URL')
                   }
              }
 
