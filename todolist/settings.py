@@ -78,7 +78,7 @@ DATABASES = {'default':
                  {'ENGINE': env('ENGINE'),
                   'NAME': env('NAME'),
                   'USER': env('USER'),
-                  'HOST': env('HOST'),
+                  'DB_HOST': env('DB_HOST'),
                   'PASSWORD': env('PASSWORD'),
                   'PORT': env('PORT'),
                   'DATABASE_URL': env('DATABASE_URL')
