@@ -8,10 +8,10 @@ COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
-EXEPOSE 8000
+
 COPY . /app
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD python manage.py runserver 0.0.0.0:8000
 
 
 

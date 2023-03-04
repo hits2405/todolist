@@ -6,6 +6,4 @@
 !core/**
 !manage.py
 !requirements.txt
-!docker-compose-ci.yaml
-!docker-compose.yaml
-!Dockerfile
+
