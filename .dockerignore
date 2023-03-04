@@ -1,8 +1,8 @@
-env/
-README.md
-docker-compose.yaml
-.gitignore
-.python-version
-app.db
-.env
-postgres-data
+# ignore all
+**
+
+# expect
+!todolist/**
+!core/**
+!manage.py
+!requirements.txt

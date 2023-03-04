@@ -1,9 +1,6 @@
 DEBUG=True
-DATABASE_URL=jdbc:postgresql://localhost:5432/postgres
-ENGINE=django.db.backends.postgresql
-NAME=todolist
-USER=todolist
-DB_HOST=postgres
-HOST=194.67.103.143
-PASSWORD=todolist
-PORT=5432
+POSTGRES_DB=db
+POSTGRES_USER=todolist_user
+POSTGRES_HOST=localhost
+POSTGRES_PASSWORD=todolist_pass
+POSTGRES_PORT=5432
