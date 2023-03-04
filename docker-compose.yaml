@@ -23,16 +23,6 @@ services:
     ports:
       - "8000:8000"
 
-  migrations1:
-    build: .
-    depends_on:
-      db:
-        condition: service_healthy
-    volumes:
-      - ./.docker_env:/app/.env
-    command: >
-       sh -c "python3 manage.py migrate"
-
   migrations:
      build: .
      depends_on:
