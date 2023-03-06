@@ -20,13 +20,13 @@ jobs:
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: ${{ secrets.DB_NAME }}
     steps:
-      - name: clone code
+      - name: copy code
         uses: actions/checkout@v2
       - name: render configs
         run: |
           mkdir deploy
           cat docker-compose-ci.yaml | envsubst > deploy/docker-compose.yaml
-      - name: clone files to server
+      - name: clone files
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -43,4 +43,13 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd deploy
-            docker-compose up -d
+            echo ${{ secrets.SSH_PASSWORD }} | sudo -S docker-compose up -d
+      - name: clean up
+        if: always()
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            docker system prune -a -f
